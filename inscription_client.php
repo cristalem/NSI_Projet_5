@@ -47,20 +47,17 @@ if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) A
  <h1>Inscription client</h1>
     
  <div id="Cforum">
-    <?php if(isset($erreur)): ?>
-        <div class="error"><?php echo $erreur; ?></div>
-    <?php endif; ?>
 
         <form method="post" action="inscription_client.php">
             <p>
                 <label for="nom">nom</label><br>
-                <input name="nom" type="text" placeholder="nom..." required /><br>
+                <input name="nom" type="text" placeholder="Nom..." value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
 
-                <label for="prenom">prenom</label><br>
-                <input name="prenom" type="text" placeholder="prenom..." required /><br>
+                <label for="prenom">Prénom</label><br>
+                <input name="prenom" type="text" placeholder="Prénom..." value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
 
-                <label for="email">email</label><br>
-                <input name="email" type="text" placeholder="exemple@abcd.com..." required /><br>
+                <label for="email">Email</label><br>
+                <input name="email" type="text" placeholder="exemple@abcd.com..." value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
 
                 <label for="mdp">Mot de passe</label><br>
                 <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>

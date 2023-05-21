@@ -58,26 +58,23 @@ if(isset($_POST['entreprise'])
  <h1>Inscription entreprise</h1>
     
  <div id="Cforum">
-    <?php if(isset($erreur)): ?>
-        <div class="error"><?php echo $erreur; ?></div>
-    <?php endif; ?>
 
         <form method="post" action="inscription_ent.php">
             <p>
                 <label for="entreprise">entreprise</label><br>
-                <input name="entreprise" type="text" placeholder="entreprise..." required /><br>
+                <input name="entreprise" type="text" placeholder="entreprise..." value="<?php echo isset($_POST['entreprise']) ? htmlspecialchars($_POST['entreprise']) : ''; ?>" required /><br>
 
                 <label for="ville">ville</label><br>
-                <input name="ville" type="text" placeholder="ville..." required /><br>
+                <input name="ville" type="text" placeholder="ville..." value="<?php echo isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : ''; ?>" required /><br>
 
                 <label for="adresse">adresse</label><br>
-                <input name="adresse" type="text" placeholder="adresse..." required /><br>
+                <input name="adresse" type="text" placeholder="adresse..." value="<?php echo isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : ''; ?>" required /><br>
 
                 <label for="code_postal">code postal</label><br>
-                <input name="code_postal" type="text" placeholder="code postal..." required /><br>
+                <input name="code_postal" type="text" placeholder="code postal..." value="<?php echo isset($_POST['code_postal']) ? htmlspecialchars($_POST['code_postal']) : ''; ?>" required /><br>
 
                 <label for="tel">numero de telephone</label><br>
-                <input name="tel" type="text" placeholder="numero de telephone..." required /><br>
+                <input name="tel" type="text" placeholder="numero de telephone..." value="<?php echo isset($_POST['tel']) ? htmlspecialchars($_POST['tel']) : ''; ?>" required /><br>
 
                 <label for="categorie">categorie</label><br>
                 <select name="categorie" id="categorie">

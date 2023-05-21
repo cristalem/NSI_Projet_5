@@ -56,18 +56,25 @@ if(isset($_POST['email'])
  <h1>Inscription pro</h1>
     
  <div id="Cforum">
-    <?php if(isset($erreur)): ?>
-        <div class="error"><?php echo $erreur; ?></div>
-    <?php endif; ?>
-
-        
+     
         <form method="post" action="inscription_pro.php">
             <p>
-                <input name="nom" type="text" placeholder="nom..." required /><br>
-                <input name="prenom" type="text" placeholder="prenom..." required /><br>
-                <input name="email" type="text" placeholder="Adresse email..." required /><br>
+                <label for="nom">nom</label><br>
+                <input name="nom" type="text" placeholder="nom..." value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
+                
+                <label for="prenom">prenom</label><br>
+                <input name="prenom" type="text" placeholder="prenom..." value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
+                
+                <label for="email">email</label><br>
+                <input name="email" type="text" placeholder="Adresse email..." value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
+                
+                <label for="mdp">mdp</label><br>
                 <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
+                
+                <label for="mdp2">Confirmation</label><br>
                 <input name="mdp2" type="password" placeholder="Confirmation..." required /><br>
+                
+
                 <input type="submit" value="S'inscrire!" />
             </p>
         </form>

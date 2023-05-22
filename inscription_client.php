@@ -1,6 +1,7 @@
 <?php
 include_once 'function/function.php';
 include_once 'function/inscription_client.class.php';
+include_once 'function/mise_en_page.php';
 $bdd = bdd();
 
 
@@ -24,14 +25,7 @@ if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) A
 }
 ?>
 <!DOCTYPE html>
-<head>
-    <meta charset='utf-8' />
-    <title>forum</title>
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/error.css" />
-</head>
+
 <body>
     
     <header>

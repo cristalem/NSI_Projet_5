@@ -1,6 +1,8 @@
 <?php session_start();
 include_once 'function/function.php';
 include_once 'function/connexion_pro.class.php';
+include_once 'function/mise_en_page.php';
+
 $bdd = bdd();
 if(isset($_POST['email']) AND isset($_POST['mdp'])){
     
@@ -19,14 +21,7 @@ if(isset($_POST['email']) AND isset($_POST['mdp'])){
 
 ?>
 <!DOCTYPE html>
-<head>
-    <meta charset='utf-8' />
-    <title>forum</title>
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/error.css" />
-</head>
+
 <body>
     
     <header>

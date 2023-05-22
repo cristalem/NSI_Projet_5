@@ -1,6 +1,7 @@
 <?php session_start();
 include_once 'function/function.php';
 include_once 'function/addPost.class.php';
+include_once 'function/mise_en_page.php';
 $bdd = bdd();
 
 
@@ -28,13 +29,6 @@ else {
     
     ?>
 <!DOCTYPE html>
-<head>
-    <meta charset='utf-8' />
-    <title>forum</title>
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-</head>
 <body>
     <header>
 
@@ -44,9 +38,9 @@ else {
             
         </div>
         <form>
-            <input type="button" onclick="history.go(-1)" >
-
-            <!-- class="fa-solid fa-arrow-left"></i> -->
+            <button onclick="history.go(-1)" >
+            <i class="fa-solid fa-arrow-left"></i>
+            </button>
 
         </form>
     </header>

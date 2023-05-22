@@ -1,6 +1,8 @@
 <?php session_start();
 include_once 'function/function.php';
 include_once 'function/entreprise.class.php';
+
+include_once 'function/mise_en_page.php';
 $bdd = bdd();
 
 if(!isset($_SESSION['id']) AND !isset($_SESSION['pseudo'])){
@@ -18,15 +20,7 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
 ?>
 
 <!DOCTYPE html>
-<head>
-    <meta charset='utf-8' />
-    <title>forum</title>
-    <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
-    <link rel="shortcut icon" href="images/favicon.ico" /><script src="https://kit.fontawesome.com/3ed158a566.js" crossorigin="anonymous"></script>
 
-</head>
 <body>
     <header>
     

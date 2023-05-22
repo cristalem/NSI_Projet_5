@@ -23,9 +23,8 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
     <title>forum</title>
     <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/general.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-0e1dJTGCynxq5ury+5cWTlZ5n9p+aK5oW/72+5IgXYO1l3qQ8l3aVcNpLyLaSzN/" crossorigin="anonymous">
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-BvlOAmRi8aWu5Ys/fZPDX7LjDSWU3IzBLGwo6G8n+2x1B/vj7UTaS56ASAr5zHvSoPsmnKHBkS18xUyQdC9WAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="shortcut icon" href="images/favicon.ico" /><script src="https://kit.fontawesome.com/3ed158a566.js" crossorigin="anonymous"></script>
 
 <script>
     
@@ -51,9 +50,10 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
             $user = $nom->fetch();
             echo 'Bienvenue : ' . $user['nom'].' '.$user['prenom'].'  :) - 
             <a href="deconnexion.php">
-            <button>
-            <i class="fa-solid fa-power-off"></i> deco
-            </button></a> ';
+                <button>
+                    <i class="fa-solid fa-power-off"></i>
+                </button>
+            </a> ';
         ?>    
 
 

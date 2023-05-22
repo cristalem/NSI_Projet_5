@@ -26,11 +26,6 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="shortcut icon" href="images/favicon.ico" /><script src="https://kit.fontawesome.com/3ed158a566.js" crossorigin="anonymous"></script>
 
-<script>
-    
-         
-</script>
-
 </head>
 <body>
     <header>
@@ -60,7 +55,7 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
 
         <form method='GET' id="search">
             <input type='search' name='search' placeholder='rechercher' autocomplete='off'> 
-            <input type="submit" value='cherche'>
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
 

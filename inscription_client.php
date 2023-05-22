@@ -60,7 +60,7 @@ if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) A
                 <input name="mdp2" class="w3-input" type="password" required /><br>
 
 
-                <input type="submit" value="S'inscrire!" />
+                <input type="submit" class="w3-button" value="S'inscrire" />
             </p>
         </form>
         

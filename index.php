@@ -137,6 +137,7 @@ else {
                     echo "<li>". $reponse['categorie']."</li>";
         
             ?>
+            <a id="reserver" href="reservation.php">reservation</a>
             <div>
                 <h3>commentaire</h3>
             </div>

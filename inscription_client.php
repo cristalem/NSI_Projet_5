@@ -42,22 +42,22 @@ if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) A
     
  <div id="Cforum">
 
-        <form method="post" action="inscription_client.php">
+        <form method="post" class="w3-panel" action="inscription_client.php">
             <p>
                 <label for="nom">nom</label><br>
-                <input name="nom" type="text" placeholder="Nom..." value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
+                <input name="nom" class="w3-input" type="text" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
 
                 <label for="prenom">Prénom</label><br>
-                <input name="prenom" type="text" placeholder="Prénom..." value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
+                <input name="prenom" class="w3-input" type="text" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
 
                 <label for="email">Email</label><br>
-                <input name="email" type="text" placeholder="exemple@abcd.com..." value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
+                <input name="email" class="w3-input" type="text" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
 
                 <label for="mdp">Mot de passe</label><br>
-                <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
+                <input name="mdp" class="w3-input" type="password" required /><br>
 
                 <label for="mdp2">confirmation du mot de passe</label><br>
-                <input name="mdp2" type="password" placeholder="Confirmation..." required /><br>
+                <input name="mdp2" class="w3-input" type="password" required /><br>
 
 
                 <input type="submit" value="S'inscrire!" />

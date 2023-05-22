@@ -9,7 +9,6 @@ include_once 'function/mise_en_page.php';
 
         <div class="topnav">
             <a class="active" href="index.php">Home</a>
-            <a href="inscription.php">S'inscrire</a>
         </div>
 
     </header>
@@ -17,7 +16,11 @@ include_once 'function/mise_en_page.php';
  <h1>reservation</h1>
     
     <div id="Cforum">
-          
+          <p>choisissez un horaire</p>
+
+
+
+          <button>pipi</button>
         
     </div>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 18 mai 2023 à 10:47
+-- Généré le : mar. 23 mai 2023 à 22:10
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -52,7 +52,7 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'garage'),
 (2, 'coiffeur'),
-(3, 'esthetisienne'),
+(3, 'estheticienne'),
 (4, 'dentiste'),
 (5, 'reparation informatique');
 
@@ -89,22 +89,23 @@ INSERT INTO `entreprise` (`id`, `entreprise`, `ville`, `categorie`, `adresse`, `
 --
 
 CREATE TABLE `horaires` (
-  `id` int(11) NOT NULL,
   `id_service` int(11) NOT NULL,
-  `horaire` datetime NOT NULL
+  `lundi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `mardi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `mercredi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `jeudi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `vendredi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `samedi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `dimanche` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Structure de la table `horaires_reserve`
+-- Déchargement des données de la table `horaires`
 --
 
-CREATE TABLE `horaires_reserve` (
-  `id` int(60) NOT NULL,
-  `id_service` int(80) NOT NULL,
-  `horaire` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `horaires` (`id_service`, `lundi`, `mardi`, `mercredi`, `jeudi`, `vendredi`, `samedi`, `dimanche`) VALUES
+(22, '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', NULL),
+(37, '3 4', '4', '5 6 7', '3 4', NULL, '14', '12 13 14');
 
 -- --------------------------------------------------------
 
@@ -178,7 +179,8 @@ INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
 (26, 25, 'hehehehehehe', '2023-05-14 17:11:11', '20'),
 (27, 25, 'hehehehehehe', '2023-05-14 17:11:18', '20'),
 (28, 25, 'pipi\r\n', '2023-05-14 17:16:21', '20'),
-(29, 25, 'pipi\r\n', '2023-05-14 17:16:26', '20');
+(29, 25, 'pipi\r\n', '2023-05-14 17:16:26', '20'),
+(30, 25, 'prout', '2023-05-22 21:16:29', '22');
 
 -- --------------------------------------------------------
 
@@ -188,11 +190,9 @@ INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
 
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
-  `nomc` varchar(60) NOT NULL,
-  `prenomc` varchar(30) NOT NULL,
-  `emailc` varchar(80) NOT NULL,
+  `id_client` int(60) NOT NULL,
   `horaire` datetime NOT NULL,
-  `service` varchar(60) NOT NULL
+  `id_service` int(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -220,7 +220,21 @@ INSERT INTO `sujet` (`id`, `name`, `categorie`, `prix`, `entreprise`, `note5`, `
 (20, 'jeux1', 'coiffeur', 0, '', 0, '', ''),
 (21, 'shtdf', 'garage', 18, 'drgd', 0, NULL, 'dgrg'),
 (22, 'jeux', 'garage', 18, 'miam', 0, NULL, 'tfh'),
-(23, 'pipi', 'esthetisienne', 150, 'miam', 0, NULL, 'le pipi c&#039;est delicieux');
+(23, 'pipi', 'esthetisienne', 150, 'miam', 0, NULL, 'le pipi c&#039;est delicieux'),
+(24, 'caca', 'esthetisienne', 18, 'miam', 0, NULL, 'pipi'),
+(25, 'caca', 'esthetisienne', 18, 'miam', 0, NULL, 'pipi'),
+(26, 'caca', 'esthetisienne', 18, 'miam', 0, NULL, 'pipi'),
+(27, 'pipi', 'garage', 11111111, 'miam', 0, NULL, 'fgbaerwe '),
+(28, 'ewqf', 'coiffeur', 3232, '1', 0, NULL, '213'),
+(29, 'e', 'garage', 1, 'w', 0, NULL, 'w'),
+(30, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(31, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(32, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(33, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(34, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(35, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(36, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
+(37, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1');
 
 --
 -- Index pour les tables déchargées
@@ -243,15 +257,7 @@ ALTER TABLE `entreprise`
 -- Index pour la table `horaires`
 --
 ALTER TABLE `horaires`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `horaire` (`horaire`),
-  ADD UNIQUE KEY `id_service` (`id_service`);
-
---
--- Index pour la table `horaires_reserve`
---
-ALTER TABLE `horaires_reserve`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_service`);
 
 --
 -- Index pour la table `membre_client`
@@ -301,12 +307,6 @@ ALTER TABLE `entreprise`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `horaires`
---
-ALTER TABLE `horaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `membre_client`
 --
 ALTER TABLE `membre_client`
@@ -322,7 +322,7 @@ ALTER TABLE `membre_pro`
 -- AUTO_INCREMENT pour la table `postsujet`
 --
 ALTER TABLE `postsujet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
@@ -334,7 +334,17 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `sujet`
 --
 ALTER TABLE `sujet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `horaires`
+--
+ALTER TABLE `horaires`
+  ADD CONSTRAINT `Sujet` FOREIGN KEY (`id_service`) REFERENCES `sujet` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

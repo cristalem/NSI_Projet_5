@@ -9,8 +9,9 @@ class addSujet{
     private $note5;
     private $description;
     private $bdd;
+    private $horaires;
     
-    public function __construct($name,$categorie,$prix,$entreprise,$description) {
+    public function __construct($name,$categorie,$prix,$entreprise,$description,$horaires) {
         
         $this->name = htmlspecialchars($name);
         $this->categorie = htmlspecialchars($categorie);
@@ -19,7 +20,7 @@ class addSujet{
         $this->note5 = htmlspecialchars($note5);
         $this->description = htmlspecialchars($description);
         $this->bdd = bdd();
-        
+        $this->horaires = $horaires;
     }
     
     
@@ -34,10 +35,10 @@ class addSujet{
 
     public function insert(){
         
-        $requete = $this->bdd->prepare(
+        $this->bdd->prepare(
             'INSERT INTO sujet(name,categorie,prix,entreprise,note5,description)
-            VALUES(:name,:categorie,:prix,:entreprise,:note5,:description)');
-        $requete->execute(array(
+            VALUES(:name,:categorie,:prix,:entreprise,:note5,:description)'
+        )->execute(array(
             'name'=> $this->name,
             'categorie'=>  $this->categorie,
             'prix'=>$this->prix,
@@ -45,7 +46,14 @@ class addSujet{
             'note5'=>$this->note5,
             'description'=>$this->description,
         ));
-        
+
+        $this->horaires += array("id_service" => $this->bdd->lastInsertId());
+        var_dump($this->horaires);
+
+        $this->bdd->prepare(
+            "INSERT INTO horaires(". implode(",", array_keys($this->horaires)) .")
+            VALUES(:".implode(",:", array_keys($this->horaires)).")"
+        )->execute($this->horaires);
         
         return 1;
     }

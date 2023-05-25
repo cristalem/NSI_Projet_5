@@ -1,7 +1,6 @@
 <?php session_start();
 include_once 'function/function.php';
 include_once 'function/addPost.class.php';
-include_once 'function/mise_en_page.php';
 $bdd = bdd();
 
 
@@ -29,12 +28,14 @@ else {
     
     ?>
 <!DOCTYPE html>
+<?php include_once 'function/mise_en_page.php';?>
 <body>
     <header>
 
         <div class="topnav">
             <a class="active" href="index.php">Home</a>
             <a href="entreprise.php">entreprise</a>
+            <a href="addSujet.php">add sujet</a>
             
         </div>
         <form>
@@ -49,12 +50,7 @@ else {
     <div id="Cforum">
         <?php
 
-        $nom = $bdd->prepare('SELECT * FROM membre_pro WHERE id = :id
-        UNION SELECT * FROM membre_client WHERE id = :id');
-        $nom->execute(array('id' => $_SESSION['id']));
-        $user = $nom->fetch();
-        echo 'Bienvenue : ' . $user['nom'].' '.$user['prenom'].'  :) - <a href="deconnexion.php">Deconnexion</a> ';
-        
+        include_once 'function/bienvenue.php';
 
 
         
@@ -108,8 +104,6 @@ else {
             <?php } ?>
 
         </section>
-
-        <a href="addSujet.php?categorie=<?php echo $_GET['categorie']; ?>">Ajouter un sujet</a>
      
             <?php
         }
@@ -131,7 +125,7 @@ else {
                     echo "<li>". $reponse['categorie']."</li>";
         
             ?>
-            <a id="reserver" href="reservation.php">reservation</a>
+            <a id="reserver" href="reservation.php?id=<?php echo $_GET['id'] ?>">reservation</a>
             <div>
                 <h3>commentaire</h3>
             </div>

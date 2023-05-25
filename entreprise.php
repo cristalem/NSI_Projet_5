@@ -32,17 +32,8 @@ if(isset($_GET['search']) AND !empty($_GET['search'])){
     </header>
     
     <div id="Cforum">
-        <?php 
-            $nom = $bdd->prepare('SELECT * FROM membre_pro WHERE id = :id
-            UNION SELECT * FROM membre_client WHERE id = :id');
-            $nom->execute(array('id' => $_SESSION['id']));
-            $user = $nom->fetch();
-            echo 'Bienvenue : ' . $user['nom'].' '.$user['prenom'].'  :) - 
-            <a href="deconnexion.php">
-                <button>
-                    <i class="fa-solid fa-power-off"></i>
-                </button>
-            </a> ';
+        <?php
+        include_once 'function/bienvenue.php';
         ?>    
 
 

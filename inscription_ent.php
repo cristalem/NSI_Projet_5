@@ -56,31 +56,31 @@ if(isset($_POST['entreprise'])
         <form method="post" action="inscription_ent.php">
             <p>
                 <label for="entreprise">entreprise</label><br>
-                <input name="entreprise" type="text" placeholder="entreprise..." value="<?php echo isset($_POST['entreprise']) ? htmlspecialchars($_POST['entreprise']) : ''; ?>" required /><br>
+                <input name="entreprise" class="w3-input" type="text" placeholder="entreprise..." value="<?php echo isset($_POST['entreprise']) ? htmlspecialchars($_POST['entreprise']) : ''; ?>" required /><br>
 
                 <label for="ville">ville</label><br>
-                <input name="ville" type="text" placeholder="ville..." value="<?php echo isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : ''; ?>" required /><br>
+                <input name="ville" class="w3-input" type="text" placeholder="ville..." value="<?php echo isset($_POST['ville']) ? htmlspecialchars($_POST['ville']) : ''; ?>" required /><br>
 
                 <label for="adresse">adresse</label><br>
-                <input name="adresse" type="text" placeholder="adresse..." value="<?php echo isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : ''; ?>" required /><br>
+                <input name="adresse" class="w3-input" type="text" placeholder="adresse..." value="<?php echo isset($_POST['adresse']) ? htmlspecialchars($_POST['adresse']) : ''; ?>" required /><br>
 
                 <label for="code_postal">code postal</label><br>
-                <input name="code_postal" type="text" placeholder="code postal..." value="<?php echo isset($_POST['code_postal']) ? htmlspecialchars($_POST['code_postal']) : ''; ?>" required /><br>
+                <input name="code_postal" class="w3-input" type="text" placeholder="code postal..." value="<?php echo isset($_POST['code_postal']) ? htmlspecialchars($_POST['code_postal']) : ''; ?>" required /><br>
 
                 <label for="tel">numero de telephone</label><br>
-                <input name="tel" type="text" placeholder="numero de telephone..." value="<?php echo isset($_POST['tel']) ? htmlspecialchars($_POST['tel']) : ''; ?>" required /><br>
+                <input name="tel" class="w3-input" type="text" placeholder="numero de telephone..." value="<?php echo isset($_POST['tel']) ? htmlspecialchars($_POST['tel']) : ''; ?>" required /><br>
 
                 <label for="categorie">categorie</label><br>
-                <select name="categorie" id="categorie">
+                <select name="categorie" class="w3-select" id="categorie">
                     <option value="garage">garage</option>
                     <option value="coiffeur">coiffeur</option>
                     <option value="esthetisienne">esthetisienne</option>
                     <option value="dentiste">dentiste</option>
                     <option value="reparation informatique">reparation informatique</option>
-                </select>
+                </select><br><br>
 
 
-                <input type="submit" value="S'inscrire!" />
+                <input type="submit" class="w3-button" value="S'inscrire!" />
             </p>
         </form>
         

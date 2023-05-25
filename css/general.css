@@ -125,6 +125,13 @@ h1{
     border-bottom:none
 }
 
+input{
+    overflow:visible
+}
+button,input,select,textarea,optgroup{
+    margin:0
+}
+
 .w3-input{
     padding:8px;
     display:block;
@@ -133,6 +140,16 @@ h1{
     width:100%
 }
 
+select{
+    text-transform:none
+}
+
+.w3-select{
+    padding:9px 0;
+    width:100%;
+    border:none;
+    border-bottom:1px solid #ccc
+}
 
 
 .w3-btn,.w3-button{
@@ -149,6 +166,20 @@ h1{
     white-space:nowrap;
     color:#fff;
     background-color:#000
+}
+
+#tableh{
+    
+    border-collapse:collapse;
+    border-spacing:0;
+    width:100%;
+    display:table;
+    border:1px solid #ccc;
+    padding:8px 8px;
+    display:table-cell;
+    text-align:left;
+    vertical-align:top;
+    padding-left:16px
 }
 
 

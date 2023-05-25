@@ -5,9 +5,23 @@ include_once 'function/mise_en_page.php';
 $bdd = bdd();
 
 
-if(isset($_POST['nom']) AND isset($_POST['prenom']) AND isset($_POST['email']) AND isset($_POST['mdp'])  AND isset($_POST['mdp2'])){
+if(
+    isset($_POST['nom']) 
+AND isset($_POST['prenom']) 
+AND isset($_POST['email']) 
+AND isset($_POST['mdp'])  
+AND isset($_POST['mdp2'])){
+
+    $usertype = 'client';
   
-    $inscription = new inscription_client($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['mdp'],$_POST['mdp2']);
+    $inscription = new inscription_client(
+        $_POST['nom'],
+        $_POST['prenom'],
+        $_POST['email'],
+        $_POST['mdp'],
+        $_POST['mdp2'],
+        $usertype);
+
     $verif = $inscription->verif();
     if($verif == "ok"){/*Tout est bon*/
      if($inscription->enregistrement()){

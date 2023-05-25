@@ -10,12 +10,16 @@ if(isset($_POST['email'])
     AND isset($_POST['mdp2'])
     AND isset($_POST['nom'])
     AND isset($_POST['prenom'])){
+
+        $usertype = 'pro';
     
-    $inscription = new inscription_pro($_POST['email'],
+    $inscription = new inscription_pro(
+        $_POST['email'],
         $_POST['mdp'],
         $_POST['mdp2'],
         $_POST['nom'],
-        $_POST['prenom']);
+        $_POST['prenom'],
+        $usertype);
 
     $verif = $inscription->verif();
     if($verif == "ok"){/*Tout est bon*/
@@ -53,23 +57,23 @@ if(isset($_POST['email'])
      
         <form method="post" action="inscription_pro.php">
             <p>
-                <label for="nom">nom</label><br>
-                <input name="nom" type="text" placeholder="nom..." value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
-                
-                <label for="prenom">prenom</label><br>
-                <input name="prenom" type="text" placeholder="prenom..." value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
-                
-                <label for="email">email</label><br>
-                <input name="email" type="text" placeholder="Adresse email..." value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
-                
-                <label for="mdp">mdp</label><br>
-                <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
-                
-                <label for="mdp2">Confirmation</label><br>
-                <input name="mdp2" type="password" placeholder="Confirmation..." required /><br>
-                
+            <label for="nom">nom</label><br>
+                <input name="nom" class="w3-input" type="text" value="<?php echo isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : ''; ?>" required /><br>
 
-                <input type="submit" value="S'inscrire!" />
+                <label for="prenom">Prénom</label><br>
+                <input name="prenom" class="w3-input" type="text" value="<?php echo isset($_POST['prenom']) ? htmlspecialchars($_POST['prenom']) : ''; ?>" required /><br>
+
+                <label for="email">Email</label><br>
+                <input name="email" class="w3-input" type="text" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>" required /><br>
+
+                <label for="mdp">Mot de passe</label><br>
+                <input name="mdp" class="w3-input" type="password" required /><br>
+
+                <label for="mdp2">confirmation du mot de passe</label><br>
+                <input name="mdp2" class="w3-input" type="password" required /><br>
+
+
+                <input type="submit" class="w3-button" value="S'inscrire" />
             </p>
         </form>
         <?php 

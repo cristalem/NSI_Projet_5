@@ -75,14 +75,10 @@ AND isset($_POST['horaires'])) {
  <h1>Ajouter un service</h1>
     
     <div id="Cforum">
-        <?php 
-            $nom = $bdd->prepare('SELECT * FROM membre_pro WHERE id = :id
-            UNION SELECT * FROM membre_client WHERE id = :id');
-            $nom->execute(array('id' => $_SESSION['id']));
-            $user = $nom->fetch();
-            echo 'Bienvenue : ' . $user['nom'].' '.$user['prenom'].'  :) - <a href="deconnexion.php">Deconnexion</a> ';
+    <?php
+        include_once 'function/bienvenue.php';
         ?>                
-        <form method="post" action="addSujet.php?categorie=<?php echo $_GET['categorie']; ?>">
+        <form method="post" action="addSujet.php">
             <p>
                 <br><input type="text" name="name" placeholder="Nom du service..." required/><br>
                 <textarea name="description" placeholder="description..."></textarea><br>
@@ -99,7 +95,7 @@ AND isset($_POST['horaires'])) {
                 <input type="number" name="prix" placeholder="prix..." required/><br>
                 <input type="text" name="entreprise" placeholder="entreprise..." required/><br>
                 
-                <table>
+                <table id="tableh">
                     <tr>
                         <td></td> <!-- Colonne vide pour l'en-tête -->
 <?php

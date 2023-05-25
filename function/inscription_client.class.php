@@ -82,6 +82,9 @@ class inscription_client{
             'email' => $this->email,
             'mdp' => $this->mdp  
         ));
+
+        
+        
         
         return 1;
     }

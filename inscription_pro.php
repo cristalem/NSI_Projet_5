@@ -10,16 +10,13 @@ if(isset($_POST['email'])
     AND isset($_POST['mdp2'])
     AND isset($_POST['nom'])
     AND isset($_POST['prenom'])){
-
-        $usertype = 'pro';
     
     $inscription = new inscription_pro(
         $_POST['email'],
         $_POST['mdp'],
         $_POST['mdp2'],
         $_POST['nom'],
-        $_POST['prenom'],
-        $usertype);
+        $_POST['prenom']);
 
     $verif = $inscription->verif();
     if($verif == "ok"){/*Tout est bon*/

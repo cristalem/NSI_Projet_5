@@ -22,6 +22,7 @@ if (isset($_POST["heure"])) {
     $heure = $_POST["heure"];
 
     include 'function/function.php';
+    
     $requete = bdd()->prepare("INSERT INTO reservation(id_client, id_service, date, heure)
     VALUES(:client, :service, :date, :heure)");
     $result = $requete->execute([
@@ -52,10 +53,6 @@ if (isset($_POST["heure"])) {
     <h1>reservation</h1>
         
     <div id="Cforum">
-
-    <?php
-        include_once 'function/bienvenue.php';
-        ?>
 
 
 <?php if (!$date) { ?>

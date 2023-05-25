@@ -4,7 +4,7 @@ include_once 'function/addPost.class.php';
 $bdd = bdd();
 
 
-if(!isset($_SESSION['id']) AND !isset($_SESSION['pseudo'])){
+if(!isset($_SESSION['id']) AND !isset($_SESSION['email'])){
 
     header('Location: inscription.php');
 }

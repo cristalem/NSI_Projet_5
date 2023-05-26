@@ -74,22 +74,18 @@ class inscription_client{
     }
         
     public function enregistrement() {
-        $requete = $this->bdd->prepare('INSERT INTO membre_client(nom,prenom,email,mdp) VALUES(:nom,:prenom,:email,:mdp)');
+        $requete = $this->bdd->prepare('INSERT INTO membre_client(nom,prenom,email,mdp,type) VALUES(:nom,:prenom,:email,:mdp,:type)');
     
         $requete->execute(array(
             'nom'=>  $this->nom,
             'prenom'=>  $this->prenom,
             'email' => $this->email,
-            'mdp' => $this->mdp  
+            'mdp' => $this->mdp,
+            'type' => 'client' 
         ));
-
-        
-        
-        
+      
         return 1;
     }
-        
-        
     
     public function session(){
         $requete = $this->bdd->prepare('SELECT id FROM membre_client WHERE email = :email ');
@@ -97,6 +93,7 @@ class inscription_client{
         $requete = $requete->fetch();
         $_SESSION['id'] = $requete['id'];
         $_SESSION['email'] = $this->email;
+        $_SESSION['type'] === 'client';
         
         return 1;
     }

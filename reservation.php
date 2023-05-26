@@ -36,6 +36,8 @@ if (isset($_POST["heure"])) {
         exit();
     }
     echo "OK";
+    
+    header('Location: index.php');
     exit();
 }
 ?>

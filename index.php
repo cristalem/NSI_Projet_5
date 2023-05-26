@@ -35,7 +35,10 @@ else {
         <div class="topnav">
             <a class="active" href="index.php">Home</a>
             <a href="entreprise.php">entreprise</a>
-            <a href="addSujet.php">add sujet</a>
+            <?php
+            if (isset($_SESSION['id']) && isset($_SESSION['type']) && $_SESSION['type'] === 'pro') {
+                echo '<a href="addSujet.php">ajouter un service</a>';
+            }?>
             
         </div>
         <form>

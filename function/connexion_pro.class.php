@@ -43,8 +43,7 @@ class connexion_pro{
         $requete = $requete->fetch();
         $_SESSION['id'] = $requete['id'];
         $_SESSION['email'] = $this->email;
-        $_SESSION['nom'] = $requete['nom'] ;
-        $_SESSION['prenom'] = $requete['prenom'] ;
+        $_SESSION['type'] = 'pro' ;
         
         return 1;
     }

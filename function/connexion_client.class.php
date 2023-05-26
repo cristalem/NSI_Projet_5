@@ -43,7 +43,7 @@ class connexion_client{
         $requete = $requete->fetch();
         $_SESSION['id'] = $requete['id'];
         $_SESSION['email'] = $this->email;
-        $_SESSION['pseudo'] = $requete['pseudo'] ;
+        $_SESSION['type'] = 'client';
         
         return 1;
     }

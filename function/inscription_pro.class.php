@@ -64,13 +64,14 @@ class inscription_pro{
     }
         
     public function enregistrement() {
-        $requete = $this->bdd->prepare('INSERT INTO membre_pro(email,mdp,nom,prenom) VALUES(:email,:mdp,:nom,:prenom)');
+        $requete = $this->bdd->prepare('INSERT INTO membre_pro(email,mdp,nom,prenom,type) VALUES(:email,:mdp,:nom,:prenom,:type)');
     
         $requete->execute(array(
             'email' => $this->email,
             'mdp' => $this->mdp,
             'nom' => $this->nom, 
-            'prenom' => $this->prenom  
+            'prenom' => $this->prenom,
+            'type' => 'pro' 
         ));
         
         return 1;
@@ -82,6 +83,7 @@ class inscription_pro{
         $requete = $requete->fetch();
         $_SESSION['id'] = $requete['id'];
         $_SESSION['email'] = $this->email;
+        $_SESSION['type'] === 'pro';
         
         return 1;
     }

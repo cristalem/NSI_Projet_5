@@ -1,5 +1,5 @@
 body{
-    background-image: url(image_fond.jpg);
+    background-color: antiquewhite;
     background-attachment: fixed;
     background-size: 100%; 
     font-family: "Karla","Arial"; 
@@ -69,11 +69,10 @@ h1{
 }
 
 .post{
-    background-color: rgb(247, 234, 206); 
-    margin: auto; 
+    background-color: #f7f7f7; 
     margin-top: 10px;
-    min-height: 200px; 
-    width: 700px; 
+    min-height: 50px; 
+    width: 500px; 
     padding: 10px; 
 }
 
@@ -153,6 +152,23 @@ select{
 
 
 .w3-btn,.w3-button{
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+    color:#fff;
+    background-color:#000
+}
+
+.w3-btna{
+    
     border:none;
     display:inline-block;
     padding:8px 16px;

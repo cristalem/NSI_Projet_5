@@ -7,7 +7,7 @@ $bdd = bdd();
 if(!isset($_SESSION['id']) AND !isset($_SESSION['email'])){
 
     header('Location: inscription.php');
-}
+}/*si pas connecte revoie vers inscription*/
 else {
     
     if(isset($_POST['name']) AND isset($_POST['sujet'])){
@@ -38,15 +38,10 @@ else {
             <?php
             if (isset($_SESSION['id']) && isset($_SESSION['type']) && $_SESSION['type'] === 'pro') {
                 echo '<a href="addSujet.php">ajouter un service</a>';
-            }?>
+            }/*ca s'affiche que pour les pro*/
+            ?>
             
         </div>
-        <form>
-            <button onclick="history.go(-1)" >
-            <i class="fa-solid fa-arrow-left"></i>
-            </button>
-
-        </form>
     </header>
  <h1>Bienvenue sur mon site !</h1>
     
@@ -70,7 +65,7 @@ else {
             if(isset($_GET['search']) AND !empty($_GET['search'])){ 
                 $recherche = htmlspecialchars($_GET['search']); 
                 $allsujet = $bdd->query('SELECT name FROM sujet WHERE name LIKE "%'.$recherche.'%" ORDER BY id DESC'
-                ); 
+                ); /*la recherche par nom dans l'ordre decroissant*/
             }
             ?>
 
@@ -78,18 +73,18 @@ else {
             <input type="hidden" name="categorie" value="<?php echo $_GET['categorie']; ?>">
             <input type='search' name='search' placeholder='rechercher' autocomplete='off'> 
             <input type="submit" value="chercher" />
-        </form>
+        </form><!-- barre de recherche -->
 
 
 
             <div class="categories">
-                <h1><?php echo $_GET['categorie']; ?></h1>
+                <h1><?php echo $_GET['categorie']; ?></h1><!-- affiche toutes les categories -->
             </div>
 
             <section class="afficher_recherche">
             <?php
             if($allsujet->rowCount() > 0) {
-
+            /*affichage de la recherche si il y a au moins un resultat */
 
                 while($sujet = $allsujet->fetch()) {
                 ?>
@@ -100,7 +95,7 @@ else {
 
             
 
-            <?php }}else{ ?>
+            <?php }}else{ /*si il y a pas de resultat*/?>
 
             <p>Aucun resultat trouvé</p> 
 
@@ -111,7 +106,7 @@ else {
             <?php
         }
         
-        else if(isset($_GET['id'])){ /*SI on est dans un sujet*/
+        else if(isset($_GET['id'])){ /*SI on est dans un sujet/services */
             $_GET['id'] = htmlspecialchars($_GET['id']);
             $requete = $bdd->prepare('SELECT * FROM sujet WHERE id = :id ');
             $requete->execute(array('id'=>$_GET['id']));
@@ -120,20 +115,34 @@ else {
             <div class="categories">
                 <h1><?php echo $reponse['name']; ?></h1>
             </div>
+            <div class="w3-container">
+                    <ul class="w3-ul">
+        <?php /*affichage des info sur le service*/
+                
+                echo "<li>". $reponse['entreprise']."</li>";
+                echo "<li>". $reponse['prix']."€ </li>";
+                echo "<li>". $reponse['description']."</li>";
+        
+            ?></ul>
+            </div><br>
 
-        <?php 
-                    echo "<li>". $reponse['prix']."€ </li>";
-                    echo "<li>". $reponse['entreprise']."</li>";
-                    echo "<li>". $reponse['description']."</li>";
-                    echo "<li>". $reponse['categorie']."</li>";
-        
-            ?>
-            <a id="reserver" href="reservation.php?id=<?php echo $_GET['id'] ?>">reservation</a>
-            <div>
+
+            <a href="reservation.php?id=<?php echo $_GET['id'] ?>">reservation</a>
+            <br><div>
                 <h3>commentaire</h3>
-            </div>
+            </div><!-- section commentaire -->
         
-            <?php 
+            <form method="post" action="index.php?id=<?php echo $_GET['id']; ?>">
+                <textarea name="sujet" placeholder="Votre message..." ></textarea>
+                <input type="hidden" name="name" value="<?php echo $_GET['id']; ?>" />
+                <input type="submit" value="Ajouter le commentaire" />
+                <?php 
+                if(isset($erreur)){
+                    echo $erreur;
+                }
+                ?>
+            </form>
+<?php 
             $requete2 = $bdd->prepare('SELECT * FROM postsujet WHERE sujet = :sujet ');
             $requete2->execute(array('sujet'=>$_GET['id']));
             while($reponse2 = $requete2->fetch()){
@@ -147,30 +156,20 @@ else {
                 echo $membres['nom'];
                 echo ' ';
                 echo $membres['prenom'];
+                echo '<br>';
+                echo $reponse2['date'];
                 echo ': <br>';
                 
-                echo $reponse2['contenu'];
+                echo $reponse2['contenu'];}}
             ?>
             </div> 
-        <?php }} ?>
-        
-            <form method="post" action="index.php?id=<?php echo $_GET['id']; ?>">
-                <textarea name="sujet" placeholder="Votre message..." ></textarea>
-                <input type="hidden" name="name" value="<?php echo $_GET['id']; ?>" />
-                <input type="submit" value="Ajouter à la conversation" />
-                <?php 
-                if(isset($erreur)){
-                    echo $erreur;
-                }
-                ?>
-            </form>
         <?php
         }
 
 
-        else { /*Si on est sur la page normal*/
+        else { /*Si on est sur la page normal affiche juste toutes les categorie par ordre alphabétique croissant*/
             
-                $requete = $bdd->query('SELECT * FROM categories');
+                $requete = $bdd->query('SELECT * FROM categories ORDER BY name ASC');
                 while($reponse = $requete->fetch()){
                 ?>
                     <div class="categories">

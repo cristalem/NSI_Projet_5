@@ -74,7 +74,7 @@ if(isset($_POST['entreprise'])
                 <select name="categorie" class="w3-select" id="categorie">
                     <option value="garage">garage</option>
                     <option value="coiffeur">coiffeur</option>
-                    <option value="estheticienne">esthetisienne</option>
+                    <option value="estheticienne">estheticienne</option>
                     <option value="dentiste">dentiste</option>
                     <option value="reparation informatique">reparation informatique</option>
                 </select><br><br>

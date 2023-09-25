@@ -3,17 +3,17 @@ include_once 'function/function.php';
 include_once 'function/connexion_client.class.php';
 include_once 'function/mise_en_page.php';
 $bdd = bdd();
-if(isset($_POST['email']) AND isset($_POST['mdp'])){
+if(isset($_POST['email']) AND isset($_POST['mdp'])){//si on a un email et un mot de passe 
     
     $connexion = new connexion_client($_POST['email'],$_POST['mdp']);
-    $verif = $connexion->verif();
+    $verif = $connexion->verif();//verifie si c'est bon
     if($verif =="ok"){
       if($connexion->session()){
-          header('Location: index.php');
+          header('Location: index.php');//connect et renvoie sur page index
       }
     }
     else {
-        $erreur = $verif; 
+        $erreur = $verif; //sinon affiche l'erreur
     } 
 }
 
@@ -32,15 +32,15 @@ if(isset($_POST['email']) AND isset($_POST['mdp'])){
 
     </header>
 
- <h1>Connexion</h1>
+ <h1>Connexion client</h1>
     
     <div id="Cforum">
           
        
             <form method="post" action="connexion_client.php">
-                <input name="email" type="text" placeholder="email..." required /><br>
-                <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
-                <input type="submit" value="Connexion !" />
+                <input name="email" class="w3-input" type="text" placeholder="email..." required /><br>
+                <input name="mdp" class="w3-input" type="password" placeholder="Mot de passe..." required /><br>
+                <input type="submit" class="w3-button" value="Connexion !" />
             </form>
         
         <?php 

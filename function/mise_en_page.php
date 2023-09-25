@@ -6,5 +6,5 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico" /><script src="https://kit.fontawesome.com/3ed158a566.js" crossorigin="anonymous"></script>
-
+    <link rel="shortcut icon" href="css/grenouilleGFH.png" type="image/x-icon">
 </head>

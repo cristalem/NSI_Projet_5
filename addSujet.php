@@ -87,7 +87,7 @@ AND isset($_POST['horaires'])) {
 <!-- TODO SELECT (table CATEOGRIES) ????????????????????????????????????????????????????????? -->
                     <option value="garage">garage</option>
                     <option value="coiffeur">coiffeur</option>
-                    <option value="esthetisienne">esthetisienne</option>
+                    <option value="estheticienne">estheticienne</option>
                     <option value="dentiste">dentiste</option>
                     <option value="reparation informatique">reparation informatique</option>
                 </select><br>

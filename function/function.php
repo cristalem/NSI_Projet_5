@@ -1,6 +1,6 @@
 <?php
 
-function bdd(){
+function bdd(){//connection a la base de donnees 
      try
 {
 	$pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;

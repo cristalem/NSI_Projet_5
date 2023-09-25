@@ -73,7 +73,7 @@ class inscription_client{
 
     }
         
-    public function enregistrement() {
+    public function enregistrement() {//insert dans la table membre client les info entre par l'utilisateur lors de la connexion
         $requete = $this->bdd->prepare('INSERT INTO membre_client(nom,prenom,email,mdp,type) VALUES(:nom,:prenom,:email,:mdp,:type)');
     
         $requete->execute(array(

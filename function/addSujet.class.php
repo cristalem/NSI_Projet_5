@@ -1,6 +1,6 @@
 <?php include_once 'function.php';
 
-class addSujet{
+class addSujet{//ajout de services
     
     private $name;
     private $categorie;
@@ -33,7 +33,7 @@ class addSujet{
     }
     
 
-    public function insert(){
+    public function insert(){//ajout dans sujet les infos du services 
         
         $this->bdd->prepare(
             'INSERT INTO sujet(name,categorie,prix,entreprise,note5,description)
@@ -42,8 +42,8 @@ class addSujet{
             'name'=> $this->name,
             'categorie'=>  $this->categorie,
             'prix'=>$this->prix,
-            'entreprise'=>$this->entreprise,
-            'note5'=>$this->note5,
+            'entreprise'=>$this->entreprise,//c'est pas encore automatique donc on le rentre a la main
+            'note5'=>$this->note5,//null j'ai pas encore fais
             'description'=>$this->description,
         ));
 

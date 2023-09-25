@@ -33,15 +33,15 @@ if(isset($_POST['email']) AND isset($_POST['mdp'])){
 
     </header>
 
- <h1>Connexion</h1>
+ <h1>Connexion professionnel</h1>
     
     <div id="Cforum">
           
        
             <form method="post" action="connexion_pro.php">
-                <input name="email" type="text" placeholder="email..." required /><br>
-                <input name="mdp" type="password" placeholder="Mot de passe..." required /><br>
-                <input type="submit" value="Connexion !" />
+                <input name="email" class="w3-input" type="text" placeholder="email..." required /><br>
+                <input name="mdp" class="w3-input" type="password" placeholder="Mot de passe..." required /><br>
+                <input type="submit" class="w3-button" value="Connexion !" />
             </form>
         
         <?php 

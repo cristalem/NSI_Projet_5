@@ -12,7 +12,7 @@ class connexion_client{
         $this->bdd = bdd();
     }
     
-    public function verif(){
+    public function verif(){//verifie si ce qui est entre et la meme chose que ce qui est dans la bdd
         
         $requete = $this->bdd->prepare('SELECT * FROM membre_client WHERE email = :email');
         $requete->execute(array('email'=> $this->email));

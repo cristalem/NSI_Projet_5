@@ -18,8 +18,8 @@ include_once 'function/mise_en_page.php';
     
         <form method="post" action="inscription.php">
             <p>
-                <a href="inscription_client.php">client</a>
-                <a href="inscription_pro.php">pro</a>
+                <a class="w3-btna" href="inscription_client.php">client</a>
+                <a class="w3-btna" href="inscription_pro.php">pro</a>
             </p>
         </form>
                 

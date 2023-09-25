@@ -20,8 +20,8 @@ include_once 'function/mise_en_page.php';
     <div id="Cforum">
           
             <form method="post" action="connexion.php">
-                <a href="connexion_client.php">client</a>
-                <a href="connexion_pro.php">pro</a>
+                <a class="w3-btna" href="connexion_client.php">client</a>
+                <a class="w3-btna" href="connexion_pro.php">pro</a>
             </form>
         
     </div>

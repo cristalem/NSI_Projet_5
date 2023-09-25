@@ -1,4 +1,4 @@
-<?php 
+<?php //affiche bienvenue suivie du nom et prenom de la personne connecter (reutiliser sur plusieurs page)
 include_once 'function/function.php';
 $bdd = bdd();
 

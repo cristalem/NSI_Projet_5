@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 23 mai 2023 à 22:10
+-- Généré le : ven. 26 mai 2023 à 16:19
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `site`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `annonce`
---
-
-CREATE TABLE `annonce` (
-  `nom` varchar(30) NOT NULL,
-  `entreprise` varchar(30) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `description` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -77,10 +64,7 @@ CREATE TABLE `entreprise` (
 --
 
 INSERT INTO `entreprise` (`id`, `entreprise`, `ville`, `categorie`, `adresse`, `code_postal`, `tel`) VALUES
-(1, 'pipi', 'pii', 'garage', '25 rue du pipi', 25148, '0215487569'),
-(2, 'caca', 'caaa', 'coiffeur', '25 rue du caca', 24584, '0215487569'),
-(3, 'miam', 'Batilly-en-Gâtinais', 'garage', '25 rue jules cesar', 45340, '0673440476'),
-(4, 'miam', 'zizi', 'garage', '25 rue du zizi', 45406, '0514258935');
+(1, 'garage Monier', 'Bignay', 'garage', '7 Chemin Bleu', 17400, '0215487569');
 
 -- --------------------------------------------------------
 
@@ -104,8 +88,8 @@ CREATE TABLE `horaires` (
 --
 
 INSERT INTO `horaires` (`id_service`, `lundi`, `mardi`, `mercredi`, `jeudi`, `vendredi`, `samedi`, `dimanche`) VALUES
-(22, '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', '1 2 4 5 6 7 12', NULL),
-(37, '3 4', '4', '5 6 7', '3 4', NULL, '14', '12 13 14');
+(1, '14 15 16 17 18', '10 11 12 14 15 16 17 18', '10 11 12 14 15 16 17 18', '14 15 16 17 18', '10 11 12 14 15 16 17 18', '10 11 12 14 15 16', NULL),
+(38, '9 10 11 14 15 16 17 18', '7 8 9 14 15 16 17 18', '7 8 9 14 15 16 17 18', '9 10 11 14 15 16 17 18', '7 8 9 14 15 16 17 18', '7 8 9 14 15 16 17 18', NULL);
 
 -- --------------------------------------------------------
 
@@ -118,15 +102,16 @@ CREATE TABLE `membre_client` (
   `nom` varchar(21) NOT NULL,
   `prenom` varchar(60) NOT NULL,
   `email` varchar(60) NOT NULL,
-  `mdp` varchar(21) NOT NULL
+  `mdp` varchar(21) NOT NULL,
+  `type` varchar(10) NOT NULL DEFAULT 'client'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `membre_client`
 --
 
-INSERT INTO `membre_client` (`id`, `nom`, `prenom`, `email`, `mdp`) VALUES
-(25, 'cristal', '', 'cristal@gmail.com', 'lepipi');
+INSERT INTO `membre_client` (`id`, `nom`, `prenom`, `email`, `mdp`, `type`) VALUES
+(27, 'David', 'Felix', 'davidfelix@yopmail.com', '3l4q57ly', 'client');
 
 -- --------------------------------------------------------
 
@@ -139,17 +124,16 @@ CREATE TABLE `membre_pro` (
   `prenom` varchar(60) NOT NULL,
   `nom` varchar(60) NOT NULL,
   `email` varchar(80) NOT NULL,
-  `mdp` varchar(80) NOT NULL
+  `mdp` varchar(80) NOT NULL,
+  `type` varchar(10) NOT NULL DEFAULT 'pro'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `membre_pro`
 --
 
-INSERT INTO `membre_pro` (`id`, `prenom`, `nom`, `email`, `mdp`) VALUES
-(1, 'premier', 'pipi', 'elsa.mazzet@gmail.com', 'elsalecaca'),
-(3, 'jules', 'cesar', 'elsa.mat@gmail.com', 'kekekeke'),
-(25, 'elsa', 'mazzetti', 'nrty@fghfh.sdf', 'mememememe');
+INSERT INTO `membre_pro` (`id`, `prenom`, `nom`, `email`, `mdp`, `type`) VALUES
+(1, 'Fernande', 'Monier', 'garage.Monier@gmail.com', 'q3fuctsk', 'pro');
 
 -- --------------------------------------------------------
 
@@ -170,17 +154,7 @@ CREATE TABLE `postsujet` (
 --
 
 INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
-(20, 25, 'le pippi', '2023-05-14 17:08:39', '20'),
-(21, 25, 'le pippi', '2023-05-14 17:09:11', '20'),
-(22, 25, 'le pippi', '2023-05-14 17:09:21', '20'),
-(23, 25, 'nyon', '2023-05-14 17:09:36', '20'),
-(24, 25, 'nyon', '2023-05-14 17:09:44', '20'),
-(25, 25, 'hehehehehehe', '2023-05-14 17:11:01', '20'),
-(26, 25, 'hehehehehehe', '2023-05-14 17:11:11', '20'),
-(27, 25, 'hehehehehehe', '2023-05-14 17:11:18', '20'),
-(28, 25, 'pipi\r\n', '2023-05-14 17:16:21', '20'),
-(29, 25, 'pipi\r\n', '2023-05-14 17:16:26', '20'),
-(30, 25, 'prout', '2023-05-22 21:16:29', '22');
+(31, 27, 'excellent très serviable et rapide je recommande', '2023-05-26 14:31:55', '1');
 
 -- --------------------------------------------------------
 
@@ -191,9 +165,17 @@ INSERT INTO `postsujet` (`id`, `propri`, `contenu`, `date`, `sujet`) VALUES
 CREATE TABLE `reservation` (
   `id` int(11) NOT NULL,
   `id_client` int(60) NOT NULL,
-  `horaire` datetime NOT NULL,
-  `id_service` int(60) NOT NULL
+  `id_service` int(60) NOT NULL,
+  `date` date NOT NULL,
+  `heure` char(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `reservation`
+--
+
+INSERT INTO `reservation` (`id`, `id_client`, `id_service`, `date`, `heure`) VALUES
+(7, 27, 1, '2023-05-30', '12');
 
 -- --------------------------------------------------------
 
@@ -206,10 +188,10 @@ CREATE TABLE `sujet` (
   `name` varchar(60) NOT NULL,
   `categorie` varchar(21) NOT NULL,
   `prix` int(11) NOT NULL,
-  `entreprise` varchar(11) NOT NULL,
+  `entreprise` varchar(60) NOT NULL,
   `note5` int(1) DEFAULT NULL,
   `image` blob DEFAULT NULL,
-  `description` varchar(1000) NOT NULL
+  `description` varchar(12000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -217,24 +199,8 @@ CREATE TABLE `sujet` (
 --
 
 INSERT INTO `sujet` (`id`, `name`, `categorie`, `prix`, `entreprise`, `note5`, `image`, `description`) VALUES
-(20, 'jeux1', 'coiffeur', 0, '', 0, '', ''),
-(21, 'shtdf', 'garage', 18, 'drgd', 0, NULL, 'dgrg'),
-(22, 'jeux', 'garage', 18, 'miam', 0, NULL, 'tfh'),
-(23, 'pipi', 'estheticienne', 150, 'miam', 0, NULL, 'le pipi c&#039;est delicieux'),
-(24, 'caca', 'estheticienne', 18, 'miam', 0, NULL, 'pipi'),
-(25, 'caca', 'estheticienne', 18, 'miam', 0, NULL, 'pipi'),
-(26, 'caca', 'estheticienne', 18, 'miam', 0, NULL, 'pipi'),
-(27, 'pipi', 'garage', 11111111, 'miam', 0, NULL, 'fgbaerwe '),
-(28, 'ewqf', 'coiffeur', 3232, '1', 0, NULL, '213'),
-(29, 'e', 'garage', 1, 'w', 0, NULL, 'w'),
-(30, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(31, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(32, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(33, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(34, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(35, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(36, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1'),
-(37, 'pipi', 'coiffeur', 1, 'miam', 0, NULL, '1');
+(1, 'vidange', 'garage', 60, 'garage Monier', NULL, NULL, 'Vidange pour voiture.\n\nCette opération d\'entretien, qui consiste à changer l\'huile du moteur, le filtre à huile et le joint du bouchon de vidange, doit être réalisée tous les 10 000 à 15 000 kilomètres.\n\nAvec le garage Monier garantissez le fonctionnement de vos voitures, motos et utilitaires !'),
+(38, 'controle technique', 'garage', 78, 'garage Monier', 0, NULL, 'controle technique');
 
 --
 -- Index pour les tables déchargées
@@ -282,7 +248,9 @@ ALTER TABLE `postsujet`
 -- Index pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idClient` (`id_client`),
+  ADD KEY `idService` (`id_service`);
 
 --
 -- Index pour la table `sujet`
@@ -310,31 +278,31 @@ ALTER TABLE `entreprise`
 -- AUTO_INCREMENT pour la table `membre_client`
 --
 ALTER TABLE `membre_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `membre_pro`
 --
 ALTER TABLE `membre_pro`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `postsujet`
 --
 ALTER TABLE `postsujet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT pour la table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `sujet`
 --
 ALTER TABLE `sujet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Contraintes pour les tables déchargées
@@ -345,6 +313,13 @@ ALTER TABLE `sujet`
 --
 ALTER TABLE `horaires`
   ADD CONSTRAINT `Sujet` FOREIGN KEY (`id_service`) REFERENCES `sujet` (`id`);
+
+--
+-- Contraintes pour la table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `idClient` FOREIGN KEY (`id_client`) REFERENCES `membre_client` (`id`),
+  ADD CONSTRAINT `idService` FOREIGN KEY (`id_service`) REFERENCES `sujet` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
